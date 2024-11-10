@@ -4,6 +4,7 @@ public class Arreglo {
     private static final int TAMANO = 100;
 
     public int[] crearCienPrimeros() {
+        // Crear arreglo con números del 0-99
         int[] resultado = new int[TAMANO];
         for(int i = 0 ; i < TAMANO; i = i + 1) {
             resultado[i] = i;
@@ -11,8 +12,10 @@ public class Arreglo {
         return resultado;
     }
 
+
+    // Método públic de tipo array de enteros, que es lo que va a devolver (return))
     public int[] crearInvirtiendoOrden(int[] origen) {
-        int[] destino = new int[origen.length];
+        int[] destino = new int[origen.length]; // Nueva instancia de un array de longitud indicada por el parámetro
 
         /*
             destino[destino.length-1] = origen[0];
@@ -48,6 +51,7 @@ public class Arreglo {
     }
 
     public double sumarValores(double[] valores) {
+        // Método que suma los valores tipo double contenidos en un arreglo
         double suma = 0.0;
 
         for (int i = 0; i < valores.length; i++) {
