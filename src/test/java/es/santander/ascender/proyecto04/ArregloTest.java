@@ -3,6 +3,7 @@ package es.santander.ascender.proyecto04;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,17 +38,46 @@ public class ArregloTest {
     }
 
 
+    // Si el test lo lanzamos con un valor negativo, fuera del rango de valores permitido [1-2000]
+    @Test
+    public void testDevolverValorEnIndiceNegativo(){
+        Arreglo cut = new Arreglo();
+       
+        try{
+         float resultado = cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, -1);
+         assertEquals(3.2f, resultado);
+         fail("Me has pedido un índice negativo. Ya te vale.");
+        } catch (Exception e){
+         assertEquals("Me has pedido un índice negativo: -1", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testDevolverValorEnIndiceMayorQue2000() {
+        Arreglo cut = new Arreglo();
+       
+        try{
+         float resultado = cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, 1);
+         assertEquals(3.2f, resultado);
+         fail("Me has pedido un índice > 2000.");
+        } catch (Exception e){
+         assertEquals("Me has pedido un índice negativo: -1", e.getMessage());
+        }  
+        
+    }
+
+    // Si el test lo lanzamos con un rango de valores permitido [1-2000]
     @Test
     public void testDevolverValorEnIndice() throws Exception {
         Arreglo cut = new Arreglo();
-
-        
-
+       
+      
         float resultado = cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, 1);
-
         assertEquals(3.2f, resultado);
-
     }
+
+
+
 
     @Test
     public void testSumarValores(){
@@ -63,6 +93,7 @@ public class ArregloTest {
         // Hacemos la prueba sobre una nueva instancia pero con los métodos del Arreglo original
         Arreglo cut = new Arreglo();
         double resultado = cut.calcularMediaValores(new double[] {1.2d,5.2d,-2.3d});
+        assertNotNull(resultado, "Ninguno de los valores recibidos puede ser nulo.");
         assertEquals((1.2d+5.2d-2.3d)/3,resultado,0.00001);
 
     }
