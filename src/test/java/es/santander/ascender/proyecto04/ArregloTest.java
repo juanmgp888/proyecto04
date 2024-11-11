@@ -39,6 +39,7 @@ public class ArregloTest {
 
 
     // Si el test lo lanzamos con un valor negativo, fuera del rango de valores permitido [1-2000]
+    /* Fue mi primer intento. Mejor no usar try and catch en los tests
     @Test
     public void testDevolverValorEnIndiceNegativo(){
         Arreglo cut = new Arreglo();
@@ -51,7 +52,17 @@ public class ArregloTest {
          assertEquals("Me has pedido un índice negativo: -1", e.getMessage());
         }
     }
+*/
+    @Test
+    public void testDevolverValorEnIndiceNegativo() throws Exception{
+        // preparas, ejecutas y verificas
+        Arreglo cut = new Arreglo();
+       
+assertThrows(Exception.class,()->cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, -1);
+      // ()->  crea un objeto sobre la marcha. Lambda, se llama.  
+    }
 
+    /* Versión noobie
     @Test
     public void testDevolverValorEnIndiceMayorQue2000() {
         Arreglo cut = new Arreglo();
@@ -65,7 +76,14 @@ public class ArregloTest {
         }  
         
     }
+ */
+    @Test
+    public void testDevolverValorEnIndiceMayorQue2000() {
+        Arreglo cut = new Arreglo();
+        assertThrows(Exception.class,()->cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, >2000);
 
+    }
+        
     // Si el test lo lanzamos con un rango de valores permitido [1-2000]
     @Test
     public void testDevolverValorEnIndice() throws Exception {
