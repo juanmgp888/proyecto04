@@ -3,9 +3,11 @@ package es.santander.ascender.proyecto04;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
+//import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;  // Importa assertThrows
+import org.junit.jupiter.api.Test;  // Importa la anotación @Test
+
 
 
 public class ArregloTest {
@@ -58,11 +60,11 @@ public class ArregloTest {
         // preparas, ejecutas y verificas
         Arreglo cut = new Arreglo();
        
-assertThrows(Exception.class,()->cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, -1);
+assertThrows(Exception.class,()->cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, -1));
       // ()->  crea un objeto sobre la marcha. Lambda, se llama.  
     }
 
-    /* Versión noobie
+    /* Versión newbie
     @Test
     public void testDevolverValorEnIndiceMayorQue2000() {
         Arreglo cut = new Arreglo();
@@ -81,8 +83,10 @@ assertThrows(Exception.class,()->cut.devolverValorEnIndice(new float[] {4.6f, 3.
     @Test
     public void testDevolverValorEnIndiceMayorQue2000() throws Exception {
         Arreglo cut = new Arreglo();
-        assertThrows(Exception.class,()->cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, >2000);
-
+        assertThrows(Exception.class,()->
+            cut.devolverValorEnIndice(new float[] {4.6f, 3.2F, -34.7f, 0.0f}, 2001));
+            // TODO 
+            // > 2000 ... está sin acabar esto
     }
        
     // Si el test lo lanzamos con un rango de valores permitido [1-2000]
